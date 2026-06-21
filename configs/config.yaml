@@ -1,0 +1,30 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  raw_data_dir: artifacts/raw_data
+  train_data_path: artifacts/raw_data/train.csv
+  test_data_path: artifacts/raw_data/test.csv
+
+data_validation:
+  status_file: artifacts/reports/validation_status.txt
+  required_columns:
+    carat: float64
+    cut: object
+    color: object
+    clarity: object
+    depth: float64
+    table: float64
+    price: int64
+    x: float64
+    y: float64
+    z: float64
+
+data_transformation:
+  processed_dir: artifacts/processed_data
+  preprocessor_name: preprocessor.pkl
+
+model_trainer:
+  model_dir: artifacts/trained_models
+  model_name: model.pkl
+  n_iter: 5
+  cv: 3

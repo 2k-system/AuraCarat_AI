@@ -1,0 +1,20 @@
+# Python bytecode artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Local Environment variables / virtual environments
+venv/
+env/
+.env
+
+# Project specific local tracking folders
+logs/
+artifacts/
+app/saved_models/*.pkl
+
+# OS specific files
+.DS_Store
+Thumbs.db

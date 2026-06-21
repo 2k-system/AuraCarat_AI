@@ -1,0 +1,16 @@
+scikit-learn
+pandas
+numpy
+pyyaml
+fastapi
+uvicorn
+jinja2
+gradio
+ydata-profiling
+pandas
+numpy
+scikit-learn
+pydantic
+requests
+seaborn
+-e .
