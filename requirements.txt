@@ -13,4 +13,5 @@ scikit-learn
 pydantic
 requests
 seaborn
+ydata-profiling>=4.6.0
 -e .

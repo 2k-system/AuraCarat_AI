@@ -49,3 +49,40 @@ class DataIngestion:
 
         except Exception as e:
             raise CustomException(e, sys)
+    
+    def log_data_profile_summary(df: pd.DataFrame, dataset_name: str = "Dataset"):
+    #" Prints a lightweight, clean profile summary of the dataset to the console."
+        print("\n" + "="*50)
+        print(f"📊 DATA QUALITY PROFILE SUMMARY: {dataset_name.upper()}")
+        print("="*50)
+        print(f"🔹 Total Rows (Observations): {df.shape[0]}")
+        print(f"🔹 Total Columns (Features):  {df.shape[1]}")
+        print("-"*50)
+    
+        print("🔍 DATA TYPES & MISSING VALUES:")
+        missing_info = pd.DataFrame({
+        'Data Type': df.dtypes,
+        'Missing Values': df.isnull().sum(),
+        'Missing %': (df.isnull().sum() / len(df) * 100).round(2)
+    })
+        print(missing_info)
+        print("-"*50)
+    
+        print("📈 PHYSICAL DIMENSIONS HIGHLIGHTS (Min / Max Validation):")
+        # Quick sanity check on our crucial x, y, z physical traits
+        metrics = ['carat', 'x', 'y', 'z']
+        valid_metrics = [m for m in metrics if m in df.columns]
+        if valid_metrics:
+            print(df[valid_metrics].describe().loc[['min', 'max', 'mean']])
+        print("="*50 + "\n")
+
+# if __name__ == "__main__":
+#     # 1. Run Data Ingestion
+#     ingestion = DataIngestion()
+#     train_path, test_path = ingestion.initiate_data_ingestion()
+    
+#     # 2. Read raw data for an instant profile audit
+#     raw_df = pd.read_csv(train_path) 
+    
+#     # 3. Print out your instant data snapshot right in your terminal!
+#     log_data_profile_summary(df=raw_df, dataset_name="Ingested Train Set"
